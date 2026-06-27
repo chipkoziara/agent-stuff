@@ -305,8 +305,8 @@ function pickFastModel(provider, requestedModel, piAi) {
 	const models = typeof piAi.getModels === "function" ? piAi.getModels(provider) : [];
 	if (!Array.isArray(models) || models.length === 0) {
 		if (requestedModel) return { id: requestedModel, baseUrl: undefined };
-		if (provider === "openai-codex") return { id: "gpt-5.4-mini", baseUrl: "https://chatgpt.com/backend-api" };
-		return { id: "claude-haiku-4-5", baseUrl: "https://api.anthropic.com" };
+		if (provider === "opencode-go") return { id: "deepseek-v4-flash", baseUrl: "https://chatgpt.com/backend-api" };
+		return { id: "deepseek-v4-flash", baseUrl: "https://api.anthropic.com" };
 	}
 
 	if (requestedModel) {
@@ -315,10 +315,7 @@ function pickFastModel(provider, requestedModel, piAi) {
 		return { ...models[0], id: requestedModel };
 	}
 
-	const preferredIds =
-		provider === "openai-codex"
-			? ["gpt-5.4-mini", "gpt-5.3-codex-spark", "gpt-5.1", "gpt-5.1-codex-mini"]
-			: ["claude-haiku-4-5", "claude-3-5-haiku-latest", "claude-3-5-haiku-20241022"];
+	const preferredIds = ["deepseek-v4-flash", "deepseek-v4-pro"];
 
 	for (const id of preferredIds) {
 		const found = models.find((m) => m.id === id);

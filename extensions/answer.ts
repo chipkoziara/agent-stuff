@@ -72,38 +72,29 @@ Example output:
   ]
 }`;
 
-const CODEX_MODEL_IDS = ["gpt-5.4-mini", "gpt-5.3-codex-spark", "gpt-5.4", "gpt-5.3-codex"];
-const HAIKU_MODEL_ID = "claude-haiku-4-5";
+const PRIMARY_MODEL_ID = "deepseek-v4-flash";
+const BACKUP_MODEL_ID = "deepseek-v4-pro";
 
 /**
- * Prefer a fast configured Codex model for extraction, then haiku, then the
+ * Prefer a fast configured model for extraction, then fallback to the
  * current model.
  */
 async function selectExtractionModel(
 	currentModel: Model<Api>,
 	modelRegistry: ModelRegistry,
 ): Promise<Model<Api>> {
-	for (const modelId of CODEX_MODEL_IDS) {
-		const codexModel = modelRegistry.find("openai-codex", modelId);
-		if (codexModel) {
-			const auth = await modelRegistry.getApiKeyAndHeaders(codexModel);
+	const models = [PRIMARY_MODEL_ID, BACKUP_MODEL_ID];
+	for (const modelId of models) {
+		const model = modelRegistry.find("opencode-go", modelId);
+		if (model) {
+			const auth = await modelRegistry.getApiKeyAndHeaders(model);
 			if (auth.ok) {
-				return codexModel;
+				return model;
 			}
 		}
 	}
 
-	const haikuModel = modelRegistry.find("anthropic", HAIKU_MODEL_ID);
-	if (!haikuModel) {
-		return currentModel;
-	}
-
-	const auth = await modelRegistry.getApiKeyAndHeaders(haikuModel);
-	if (auth.ok === false) {
-		return currentModel;
-	}
-
-	return haikuModel;
+	return currentModel;
 }
 
 function toExtractedQuestion(value: unknown): ExtractedQuestion | null {

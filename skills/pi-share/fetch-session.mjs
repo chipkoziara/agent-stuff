@@ -283,8 +283,8 @@ ${formatted}`;
 
   try {
     const result = spawnSync('pi', [
-      '--provider', 'anthropic',
-      '--model', 'claude-haiku-4-5',
+      '--provider', 'opencode-go',
+      '--model', 'deepseek-v4-flash',
       '--no-tools',
       '--no-session',
       '-p',
