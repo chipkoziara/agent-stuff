@@ -1,5 +1,9 @@
 # Agent Notes
 
+## Git
+
+- **NEVER push to `upstream`**. Always push to `origin` (`git push origin main`). `upstream` is `mitsuhiko/agent-stuff` and is read-only for us.
+
 ## Releases
 
 1. Run `npm version <patch|minor|major>` and verify `package.json` updates.
