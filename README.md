@@ -1,8 +1,6 @@
 # Agent Stuff
 
-Chip's personal [Pi Coding Agent](https://buildwithpi.ai/) package: reusable skills, extensions, themes, and a few supporting utilities that I use across projects.
-
-The package is published to npm as [`mitsupi`](https://www.npmjs.com/package/mitsupi). The Pi package manifest in [`package.json`](package.json) exports:
+Chip's personal [Pi Coding Agent](https://buildwithpi.ai/) skills, extensions, themes, and a few supporting utilities used across projects. Forked from: https://github.com/mitsuhiko/agent-stuff
 
 - [`extensions`](extensions) as Pi extensions
 - [`skills`](skills) as agent skills
@@ -56,13 +54,3 @@ Custom themes live in [`themes`](themes). No themes are currently included.
 - [`intercepted-commands`](intercepted-commands) - Shell shims for `pip`, `pip3`, `poetry`, `python`, and `python3`. These are used by [`extensions/uv.ts`](extensions/uv.ts) to nudge agents toward `uv`.
 - [`analyze-edits.py`](analyze-edits.py) - `uv run` script for analyzing `edit` tool usage in Pi session JSONL files.
 - [`.github/workflows/npm-publish.yml`](.github/workflows/npm-publish.yml) - Publishes the npm package on semver tags when the tag matches `package.json`.
-
-## Development
-
-Install dependencies with npm:
-
-```sh
-npm install
-```
-
-Release notes for this repository are in [`CHANGELOG.md`](CHANGELOG.md). The package currently relies on Pi to load TypeScript extensions directly from the paths declared in [`package.json`](package.json).
