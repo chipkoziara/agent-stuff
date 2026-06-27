@@ -1,6 +1,6 @@
 # Agent Stuff
 
-Chip's personal [Pi Coding Agent](https://buildwithpi.ai/) skills, extensions, themes, and a few supporting utilities used across projects. Forked from: https://github.com/mitsuhiko/agent-stuff
+Chip's personal [Pi Coding Agent](https://pi.dev/) skills, extensions, themes, and a few supporting utilities used across projects. Forked from: https://github.com/mitsuhiko/agent-stuff
 
 - [`extensions`](extensions) as Pi extensions
 - [`skills`](skills) as agent skills
