@@ -4,6 +4,7 @@ All notable changes to agent-stuff are documented here.
 
 ## 1.7.0
 
+* Replaced `multi-edit.ts` with upstream's `unified-edit.ts`, which replaces `edit` with a single text payload supporting marked row edit scripts and Codex-style patches with preflight validation.
 * Added a serial tmux-backed `subagent` tool that runs one observable Pi child at a time, with attach support (`pi --attach-subagent`).
 * Added an idle continue shortcut (`shift+alt+enter`) that sends "continue" only when the agent is stopped.
 * Added a cost/session column and provider-agnostic model grouping to `/session-breakdown`.
