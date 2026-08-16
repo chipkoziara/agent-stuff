@@ -14,6 +14,7 @@ All notable changes to agent-stuff are documented here.
 * Renamed the npm package to `chip-pi-stuff` and pointed repository metadata at the fork.
 * Switched question extraction and session summarization to `opencode-go` deepseek models (flash with pro backup).
 * Removed stale skills, extensions, themes, and prompt commands not used in this fork.
+* Removed the `notify` extension (notifications handled by herdr) and the `review` extension (code review handled by the `code-review` skill).
 
 ## 1.6.0
 
