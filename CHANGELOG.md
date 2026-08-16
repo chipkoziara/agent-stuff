@@ -2,7 +2,17 @@
 
 All notable changes to agent-stuff are documented here.
 
-## Unreleased
+## 1.7.0
+
+* Added a serial tmux-backed `subagent` tool that runs one observable Pi child at a time, with attach support (`pi --attach-subagent`).
+* Added an idle continue shortcut (`shift+alt+enter`) that sends "continue" only when the agent is stopped.
+* Added a cost/session column and provider-agnostic model grouping to `/session-breakdown`.
+* Added optional headless Chrome mode to the `web-browser` skill; extensions are disabled for headless launches.
+* Fixed the notify extension leaking OSC 8 hyperlink text into fullscreen prompt editors.
+* Removed the `Ctrl+Shift+F` shortcut from the files extension.
+* Renamed the npm package to `chip-pi-stuff` and pointed repository metadata at the fork.
+* Switched question extraction and session summarization to `opencode-go` deepseek models (flash with pro backup).
+* Removed stale skills, extensions, themes, and prompt commands not used in this fork.
 
 ## 1.6.0
 
