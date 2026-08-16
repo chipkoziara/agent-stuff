@@ -72,8 +72,10 @@ Example output:
   ]
 }`;
 
-const PRIMARY_MODEL_ID = "deepseek-v4-flash";
-const BACKUP_MODEL_ID = "deepseek-v4-pro";
+type ModelPreference = { provider: string; modelId: string };
+
+const PRIMARY_MODEL: ModelPreference = { provider: "opencode-go", modelId: "grok-4.5" };
+const BACKUP_MODEL: ModelPreference = { provider: "fireworks", modelId: "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b" };
 
 /**
  * Prefer a fast configured model for extraction, then fallback to the
@@ -83,9 +85,9 @@ async function selectExtractionModel(
 	currentModel: Model<Api>,
 	modelRegistry: ModelRegistry,
 ): Promise<Model<Api>> {
-	const models = [PRIMARY_MODEL_ID, BACKUP_MODEL_ID];
-	for (const modelId of models) {
-		const model = modelRegistry.find("opencode-go", modelId);
+	const models = [PRIMARY_MODEL, BACKUP_MODEL];
+	for (const { provider, modelId } of models) {
+		const model = modelRegistry.find(provider, modelId);
 		if (model) {
 			const auth = await modelRegistry.getApiKeyAndHeaders(model);
 			if (auth.ok) {
